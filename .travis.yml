@@ -1,0 +1,65 @@
+language: php
+sudo: required
+services:
+  - docker
+
+php:
+  - 5.3
+  - 5.4
+  - 5.5
+  - 5.6
+  - 7.0
+  - hhvm
+  - nightly
+
+# This triggers builds to run on the new TravisCI infrastructure.
+# See: http://docs.travis-ci.com/user/workers/container-based-infrastructure/
+#sudo: false
+
+matrix:
+  allow_failures:
+    - php: 5.3
+    - php: hhvm
+    - php: nightly
+  fast_finish: true
+  include:
+    - php: 5.4
+        env:
+          - COMPOSER_FLAGS="--prefer-stable --prefer-lowest"
+    - php: 5.6
+        env:
+          - COLLECT_COVERAGE=true
+
+before_install:
+  - echo "collect coverage flag: $COLLECT_COVERAGE"
+  - scripts/install_oci8_ext.sh
+  - echo "extension = oci8.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - docker pull wnameless/oracle-xe-11g
+  - DOCKER_ORACLE=$(docker run -d -p 49161:1521 -e ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe -e ORACLE_SID=xe -e TNS_ADMIN=$ORACLE_HOME/network/admin -e SQLPLUS=$ORACLE_HOME/bin/sqlplus wnameless/oracle-xe-11g)
+  - echo "Wait 180 seconds to allow Oracle to be initialized"
+  - sleep 120
+  - docker exec -i $DOCKER_ORACLE bash -c 'echo "ALTER PROFILE DEFAULT LIMIT PASSWORD_REUSE_TIME UNLIMITED;" | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus system/oracle@localhost:1521'
+  - docker exec -i $DOCKER_ORACLE bash -c 'echo "ALTER PROFILE DEFAULT LIMIT FAILED_LOGIN_ATTEMPTS UNLIMITED;" | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus system/oracle@localhost:1521'
+  - docker exec -i $DOCKER_ORACLE bash -c 'echo "ALTER PROFILE DEFAULT LIMIT PASSWORD_LIFE_TIME UNLIMITED;" | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus system/oracle@localhost:1521'
+  - docker exec -i $DOCKER_ORACLE bash -c 'echo "ALTER PROFILE DEFAULT LIMIT PASSWORD_GRACE_TIME UNLIMITED;" | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus system/oracle@localhost:1521'
+  - docker exec -i $DOCKER_ORACLE bash -c 'echo "ALTER USER system IDENTIFIED BY temp_password;" | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus system/oracle@localhost:1521'
+  - docker exec -i $DOCKER_ORACLE bash -c 'echo "ALTER USER system IDENTIFIED BY oracle;" | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus system/temp_password@localhost:1521'
+
+install:
+  - travis_retry composer self-update
+  - travis_retry composer install ${COMPOSER_FLAGS} --no-interaction --prefer-source --ignore-platform-reqs
+
+before_script:
+  - cp .env.example .env
+  - mkdir -p build/logs
+
+script:
+  - vendor/bin/phpcs --standard=psr2 src/
+  - if [[ $COLLECT_COVERAGE = 'true' ]]; then vendor/bin/phpunit --coverage-clover build/logs/clover.xml; else vendor/bin/phpunit; fi
+
+after_script:
+  - if [[ $COLLECT_COVERAGE = 'true' ]]; then php vendor/bin/ocular code-coverage:upload --format=php-clover build/logs/clover.xml; fi
+
+notifications:
+  on_success: never
+  on_failure: always
