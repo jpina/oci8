@@ -21,7 +21,7 @@ abstract class Oci8Base
     protected function getErrorHandler()
     {
         if (!$this->errorHandler) {
-            $this->errorHandler = function($severity, $message, $file = '', $line = 0, $context = array()) {
+            $this->errorHandler = function ($severity, $message, $file = '', $line = 0, $context = array()) {
                 restore_error_handler();
                 $code = 0;
 
