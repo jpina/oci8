@@ -3,8 +3,9 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-travis]][link-travis]
-[![Coverage Status][ico-scrutinizer]][link-scrutinizer]
+[![Coverage Status][ico-coverage]][link-coverage]
 [![Quality Score][ico-code-quality]][link-code-quality]
+[![Code Climate][ico-code-quality2]][link-code-quality2]
 [![Dependency Status](https://gemnasium.com/jpina/oci8.svg)][ico-dependencies]
 [![Total Downloads][ico-downloads]][link-downloads]
 
@@ -58,16 +59,18 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [ico-version]: https://img.shields.io/packagist/v/jpina/oci8.svg?style=flat-square
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/jpina/oci8/master.svg?style=flat-square
-[ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/jpina/oci8.svg?style=flat-square
+[ico-travis]: https://travis-ci.org/jpina/oci8.svg?branch=master
+[ico-coverage]: https://codeclimate.com/github/jpina/oci8/badges/coverage.svg 
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/jpina/oci8.svg?style=flat-square
+[ico-code-quality2]: https://codeclimate.com/github/jpina/oci8/badges/gpa.svg
 [ico-dependencies]: https://gemnasium.com/jpina/oci8
 [ico-downloads]: https://img.shields.io/packagist/dt/jpina/oci8.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/jpina/oci8
 [link-travis]: https://travis-ci.org/jpina/oci8
-[link-scrutinizer]: https://scrutinizer-ci.com/g/jpina/oci8/code-structure
+[link-coverage]: https://codeclimate.com/github/jpina/oci8/coverage 
 [link-code-quality]: https://scrutinizer-ci.com/g/jpina/oci8
+[link-code-quality2]: https://codeclimate.com/github/jpina/oci8
 [link-downloads]: https://packagist.org/packages/jpina/oci8
 [link-author]: https://github.com/jpina
 [link-contributors]: https://github.com/jpina/oci8/graphs/contributors
