@@ -41,10 +41,10 @@ before_script:
 
 script:
   - if [[ "$EXECUTE_TEST_COVERAGE" != 'true' ]]; then vendor/bin/phpunit ; vendor/bin/phpunit --coverage-clover=build/logs/clover.xml ; fi
-  - if [[ "$EXECUTE_TEST_COVERAGE" = 'true' ]]; then vendor/bin/phpcs --standard=psr2 src/ ; fi
+  - if [[ "$EXECUTE_CS_CHECK" = 'true' ]]; then vendor/bin/phpcs --standard=psr2 src/ ; fi
 
 after_script:
-  - if [[ "$EXECUTE_TEST_COVERALLS" = "true" ]]; then php vendor/bin/ocular code-coverage:upload --format=php-clover build/logs/clover.xml; fi
+  - if [[ "$EXECUTE_TEST_COVERAGE" = "true" ]]; then php vendor/bin/ocular code-coverage:upload --format=php-clover build/logs/clover.xml; fi
 
 notifications:
   on_success: never
