@@ -5,6 +5,7 @@
 [![Build Status][ico-travis]][link-travis]
 [![Coverage Status][ico-scrutinizer]][link-scrutinizer]
 [![Quality Score][ico-code-quality]][link-code-quality]
+[![Dependency Status](https://gemnasium.com/jpina/oci8.svg)][ico-dependencies]
 [![Total Downloads][ico-downloads]][link-downloads]
 
 
@@ -60,6 +61,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-travis]: https://img.shields.io/travis/jpina/oci8/master.svg?style=flat-square
 [ico-scrutinizer]: https://img.shields.io/scrutinizer/coverage/g/jpina/oci8.svg?style=flat-square
 [ico-code-quality]: https://img.shields.io/scrutinizer/g/jpina/oci8.svg?style=flat-square
+[ico-dependencies]: https://gemnasium.com/jpina/oci8
 [ico-downloads]: https://img.shields.io/packagist/dt/jpina/oci8.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/jpina/oci8
