@@ -58,7 +58,7 @@ class Oci8StatementTest extends \PHPUnit_Framework_TestCase
         $statement = $this->getNewStatement($create);
         try {
             $statement->execute();
-        } catch (\PHPUnit_Framework_Error_Warning $ex) {
+        } catch (Oci8Exception $ex) {
             if ($ex->getMessage() !== 'oci_execute(): ORA-00942: table or view does not exist') {
                 throw $ex;
             }
