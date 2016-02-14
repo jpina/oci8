@@ -104,7 +104,7 @@ class Oci8Connection extends Oci8Base implements Oci8ConnectionInterface
     public function getClientMayorVersion()
     {
         $clientVersion = $this->getClientVersion();
-        return (int)substr($clientVersion, 0, strpos($clientVersion, '.'));
+        return (int) substr($clientVersion, 0, strpos($clientVersion, '.'));
     }
 
     public function getClientVersion()
@@ -139,7 +139,7 @@ class Oci8Connection extends Oci8Base implements Oci8ConnectionInterface
     public function getServerMayorVersion()
     {
         preg_match('/\\d+(:?\\.\\d+)+/', $this->getServerVersion(), $matches);
-        return (int)substr($matches[0], 0, strpos($matches[0], '.'));
+        return (int) substr($matches[0], 0, strpos($matches[0], '.'));
     }
 
     public function getServerVersion()
