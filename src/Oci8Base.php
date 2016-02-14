@@ -15,6 +15,9 @@ abstract class Oci8Base
         return $error;
     }
 
+    /**
+     * @return callable
+     */
     protected function getErrorHandler()
     {
         if (!$this->errorHandler) {
