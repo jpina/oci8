@@ -58,7 +58,7 @@ If you discover any security related issues, please email :author_email instead 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/jpina/oci8.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
+[ico-license]: https://img.shields.io/:license-mit-blue.svg
 [ico-travis]: https://travis-ci.org/jpina/oci8.svg?branch=master
 [ico-coverage]: https://codeclimate.com/github/jpina/oci8/badges/coverage.svg 
 [ico-scrutinizer]: https://scrutinizer-ci.com/g/jpina/oci8/badges/quality-score.png?b=master
