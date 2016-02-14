@@ -3,25 +3,19 @@ sudo: required
 services:
   - docker
 
-php:
-  - 5.3
-  - 5.4
-  - 5.5
-  - 5.6
-  - 7.0
-  - hhvm
-  - nightly
-
-# This triggers builds to run on the new TravisCI infrastructure.
-# See: http://docs.travis-ci.com/user/workers/container-based-infrastructure/
-#sudo: false
-
 matrix:
-  allow_failures:
-    - php: 5.3
-    - php: hhvm
-    - php: nightly
   fast_finish: true
+  include:
+    - php: 5.3
+    - php: 5.4
+    - php: 5.5
+    - php: 5.6
+      env:
+        - EXECUTE_TEST_COVERAGE=true
+        - EXECUTE_CS_CHECK=true
+    - php: 7
+    - php: nightly
+    - php: hhvm
 
 before_install:
   - bin/install_oci8_ext.sh
@@ -36,7 +30,6 @@ before_install:
   - docker exec -i $DOCKER_ORACLE bash -c 'echo "ALTER PROFILE DEFAULT LIMIT PASSWORD_GRACE_TIME UNLIMITED;" | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus system/oracle@localhost:1521'
   - docker exec -i $DOCKER_ORACLE bash -c 'echo "ALTER USER system IDENTIFIED BY temp_password;" | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus system/oracle@localhost:1521'
   - docker exec -i $DOCKER_ORACLE bash -c 'echo "ALTER USER system IDENTIFIED BY oracle;" | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus system/temp_password@localhost:1521'
-  - COLLECT_COVERAGE=true
 
 install:
   - travis_retry composer self-update
@@ -47,11 +40,11 @@ before_script:
   - mkdir -p build/logs
 
 script:
-  - vendor/bin/phpcs --standard=psr2 src/
-  - if [[ "$COLLECT_COVERAGE" = "true" ]]; then vendor/bin/phpunit --coverage-clover build/logs/clover.xml; else vendor/bin/phpunit; fi
+  - if [[ "$EXECUTE_TEST_COVERAGE" != 'true' ]]; then vendor/bin/phpunit ; vendor/bin/phpunit --coverage-clover=build/logs/clover.xml ; fi
+  - if [[ "$EXECUTE_TEST_COVERAGE" = 'true' ]]; then vendor/bin/phpcs --standard=psr2 src/ ; fi
 
 after_script:
-  - if [[ "$COLLECT_COVERAGE" = "true" ]]; then php vendor/bin/ocular code-coverage:upload --format=php-clover build/logs/clover.xml; fi
+  - if [[ "$EXECUTE_TEST_COVERALLS" = "true" ]]; then php vendor/bin/ocular code-coverage:upload --format=php-clover build/logs/clover.xml; fi
 
 notifications:
   on_success: never
