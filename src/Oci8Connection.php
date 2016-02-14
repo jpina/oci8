@@ -7,7 +7,7 @@ namespace Jpina\Oci8;
  * @package Jpina\Oci8
  * @see http://php.net/manual/en/book.oci8.php
  */
-class Oci8Connection extends Oci8Base implements Oci8ConnectionInterface
+class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 {
     /**
      * Connection constructor.

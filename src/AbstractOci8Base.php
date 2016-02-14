@@ -2,7 +2,7 @@
 
 namespace Jpina\Oci8;
 
-abstract class Oci8Base
+abstract class AbstractOci8Base
 {
     private $errorHandler;
     protected $resource;

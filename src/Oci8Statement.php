@@ -7,7 +7,7 @@ namespace Jpina\Oci8;
  * @package Jpina\Oci8
  * @see http://php.net/manual/en/book.oci8.php
  */
-class Oci8Statement extends Oci8Base implements Oci8StatementInterface
+class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 {
     /** @var resource */
     protected $resource;
