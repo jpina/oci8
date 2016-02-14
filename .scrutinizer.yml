@@ -22,22 +22,3 @@ checks:
     fix_line_ending: true
     fix_identation_4spaces: true
     fix_doc_comments: true
-
-build:
-  environment:
-    php: '5.6.16'
-  dependencies:
-    before:
-      - 'composer install'
-  tests:
-    override:
-      -
-        command: 'vendor/bin/phpunit --coverage-clover=build/logs/clover.xml'
-        coverage:
-          file: 'build/logs/clover.xml'
-          format: 'php-clover'
-
-tools:
-  external_code_coverage:
-    timeout: 600
-    runs: 3
