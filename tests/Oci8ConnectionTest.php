@@ -423,7 +423,7 @@ class Oci8ConnectionTest extends \PHPUnit_Framework_TestCase
     public function testSetEdition()
     {
         $database = $this->getConnection();
-        $edition = 'TEST_EDITION_' . time();
+        $edition = 'TEST_EDITION_' . rand(0,1000) . time();
         $statement = $database->parse('CREATE EDITION ' . $edition);
         $statement->execute();
 
