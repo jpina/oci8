@@ -24,7 +24,7 @@ matrix:
   fast_finish: true
 
 before_install:
-  - scripts/install_oci8_ext.sh
+  - bin/install_oci8_ext.sh
   - echo "extension = oci8.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - docker pull wnameless/oracle-xe-11g
   - DOCKER_ORACLE=$(docker run -d -p 49161:1521 -e ORACLE_HOME=/u01/app/oracle/product/11.2.0/xe -e ORACLE_SID=xe -e TNS_ADMIN=$ORACLE_HOME/network/admin -e SQLPLUS=$ORACLE_HOME/bin/sqlplus wnameless/oracle-xe-11g)
