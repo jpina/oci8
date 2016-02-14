@@ -22,16 +22,8 @@ matrix:
     - php: hhvm
     - php: nightly
   fast_finish: true
-  include:
-    - php: 5.4
-        env:
-          - COMPOSER_FLAGS="--prefer-stable --prefer-lowest"
-    - php: 5.6
-        env:
-          - COLLECT_COVERAGE=true
 
 before_install:
-  - echo "collect coverage flag: $COLLECT_COVERAGE"
   - scripts/install_oci8_ext.sh
   - echo "extension = oci8.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
   - docker pull wnameless/oracle-xe-11g
@@ -44,6 +36,7 @@ before_install:
   - docker exec -i $DOCKER_ORACLE bash -c 'echo "ALTER PROFILE DEFAULT LIMIT PASSWORD_GRACE_TIME UNLIMITED;" | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus system/oracle@localhost:1521'
   - docker exec -i $DOCKER_ORACLE bash -c 'echo "ALTER USER system IDENTIFIED BY temp_password;" | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus system/oracle@localhost:1521'
   - docker exec -i $DOCKER_ORACLE bash -c 'echo "ALTER USER system IDENTIFIED BY oracle;" | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus system/temp_password@localhost:1521'
+  - COLLECT_COVERAGE=true
 
 install:
   - travis_retry composer self-update
