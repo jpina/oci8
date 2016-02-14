@@ -18,7 +18,7 @@ abstract class Oci8Base
     protected function getErrorHandler()
     {
         if (!$this->errorHandler) {
-            $this->errorHandler = function ($severity, $message, $file = '', $line = 0, $context = array()) {
+            $this->errorHandler = function($severity, $message, $file = '', $line = 0, $context = array()) {
                 restore_error_handler();
                 $code = 0;
 
@@ -26,7 +26,7 @@ abstract class Oci8Base
                 foreach ($patterns as $pattern) {
                     preg_match($pattern, $message, $matches);
                     if (is_array($matches) && array_key_exists(1, $matches)) {
-                        $code = (int)$matches[1];
+                        $code = (int) $matches[1];
                     }
                 }
 
