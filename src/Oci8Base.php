@@ -23,7 +23,7 @@ abstract class Oci8Base
                 $code = 0;
 
                 $patterns = array('/ORA-(\d+)/', '/OCI-(\d+)/');
-                foreach($patterns as $pattern) {
+                foreach ($patterns as $pattern) {
                     preg_match($pattern, $message, $matches);
                     if (is_array($matches) && array_key_exists(1, $matches)) {
                         $code = (int)$matches[1];

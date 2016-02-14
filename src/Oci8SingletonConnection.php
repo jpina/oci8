@@ -28,8 +28,7 @@ class Oci8SingletonConnection extends Oci8Connection
         $connectionString = null,
         $characterSet = null,
         $sessionMode = 0
-    )
-    {
+    ) {
         set_error_handler($this->getErrorHandler());
         $connection = oci_connect($username, $password, $connectionString, $characterSet, $sessionMode);
         restore_error_handler();

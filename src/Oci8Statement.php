@@ -66,7 +66,8 @@ class Oci8Statement extends Oci8Base implements Oci8StatementInterface
         return $isSuccess;
     }
 
-    public function fetchAll(&$output, $skip = 0, $maxRows = -1, $flags = 0) {
+    public function fetchAll(&$output, $skip = 0, $maxRows = -1, $flags = 0)
+    {
         if (empty($flags)) {
             $flags = OCI_FETCHSTATEMENT_BY_COLUMN | OCI_ASSOC;
         }
