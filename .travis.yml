@@ -48,8 +48,6 @@ before_install:
   - docker exec -i $DOCKER_ORACLE bash -c 'echo "ALTER PROFILE DEFAULT LIMIT PASSWORD_GRACE_TIME UNLIMITED;" | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus system/oracle@localhost:1521'
   - docker exec -i $DOCKER_ORACLE bash -c 'echo "ALTER USER system IDENTIFIED BY temp_password;" | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus system/oracle@localhost:1521'
   - docker exec -i $DOCKER_ORACLE bash -c 'echo "ALTER USER system IDENTIFIED BY oracle;" | /u01/app/oracle/product/11.2.0/xe/bin/sqlplus system/temp_password@localhost:1521'
-  - EXECUTE_TEST_COVERAGE=true
-  - EXECUTE_CS_CHECK=true
 
 install:
   - travis_retry composer self-update
@@ -60,12 +58,12 @@ before_script:
   - mkdir -p build/logs
 
 script:
-  - if [[ "$EXECUTE_TEST_COVERAGE" != 'true' ]]; then vendor/bin/phpunit ; vendor/bin/phpunit --coverage-clover=build/logs/clover.xml ; fi
-  - if [[ "$EXECUTE_CS_CHECK" = 'true' ]]; then vendor/bin/phpcs --standard=psr2 src/ ; fi
+  - composer test-coverage
+  - composer cs
 
 after_script:
-  - if [[ "$EXECUTE_TEST_COVERAGE" = "true" ]]; then php vendor/bin/ocular code-coverage:upload --format=php-clover build/logs/clover.xml ; fi
-  - if [[ "$EXECUTE_TEST_COVERAGE" = "true" ]]; then php bin/codeclimate.sh ; fi
+  - composer push-coverage-scrutinizer
+  - composer push-coverage-codeclimate
 
 notifications:
   on_success: never
