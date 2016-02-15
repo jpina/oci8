@@ -9,9 +9,8 @@
 [![Dependencies Status](https://gemnasium.com/jpina/oci8.svg)][ico-dependencies]
 [![Total Downloads][ico-downloads]][link-downloads]
 
-
-This is where your description should go. Try and limit it to a paragraph or two, and maybe throw in a mention of what
-PSRs you support to avoid any confusion with users and contributors.
+Oci8 is a wrapper for the PHP [Oracle OCI](http://php.net/manual/en/book.oci8.php) functions that allows interaction
+with Oracle databases by using objects in place of the regular `oci_*` functions.
 
 ## Install
 
@@ -27,7 +26,7 @@ $ composer require jpina/oci8
 $db = new Jpina\Oci8Connection('username', 'password', '//localhost:1521/XE');
 $statement = $db->parse('SELECT * FROM dual');
 $statement->execute();
-$statement->fetchAssoc();
+$row = $statement->fetchAssoc();
 ```
 
 ## Change log
