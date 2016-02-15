@@ -21,20 +21,6 @@ matrix:
     - php: nightly
   fast_finish: true
 
-#matrix:
-#  fast_finish: true
-#  include:
-#    - php: 5.3
-#    - php: 5.4
-#    - php: 5.5
-#    - php: 5.6
-#        env:
-#          - EXECUTE_TEST_COVERAGE=true
-#          - EXECUTE_CS_CHECK=true
-#    - php: 7
-#    - php: nightly
-#    - php: hhvm
-
 before_install:
   - bin/install_oci8_ext.sh
   - echo "extension = oci8.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
@@ -58,12 +44,11 @@ before_script:
   - mkdir -p build/logs
 
 script:
-  - composer test-coverage
-  - composer cs
+  - if [ "$TRAVIS_PHP_VERSION" == "5.6" ]; then composer test-coverage ; else composer test ; fi
+  - if [ "$TRAVIS_PHP_VERSION" == "5.6" ]; then composer cs ; fi
 
 after_script:
-  - composer push-coverage-scrutinizer
-  - composer push-coverage-codeclimate
+  - if [ "$TRAVIS_PHP_VERSION" == "5.6" ]; then composer push-test-coverage ; fi
 
 notifications:
   on_success: never

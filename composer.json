@@ -16,7 +16,6 @@
     "ext-oci8": ">=2.0.0"
   },
   "require-dev": {
-    "codeclimate/php-test-reporter": "^0.2",
     "phpunit/phpunit" : "^4.8",
     "scrutinizer/ocular": "^1.1",
     "squizlabs/php_codesniffer": "^2.3",
@@ -36,8 +35,7 @@
     "cs": "vendor/bin/phpcs --standard=psr2 src/",
     "test": "vendor/bin/phpunit",
     "test-coverage": "vendor/bin/phpunit --coverage-clover build/logs/clover.xml",
-    "push-coverage-scrutinizer": "vendor/bin/ocular code-coverage:upload --format=php-clover build/logs/clover.xml",
-    "push-coverage-codeclimate": "bin/codeclimate.sh"
+    "push-test-coverage": "vendor/bin/ocular code-coverage:upload --format=php-clover build/logs/clover.xml",
   },
   "extra": {
     "branch-alias": {
