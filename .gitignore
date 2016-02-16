@@ -1,8 +1,6 @@
 /bin/oci8-2.*
 /bin/package.xml
 /build
-/.idea
-/*.sublime-*
 /vendor
 /.env
 /composer.lock
