@@ -12,6 +12,8 @@
 Oci8 is a wrapper for the PHP [Oracle OCI](http://php.net/manual/en/book.oci8.php) functions that allows interaction
 with Oracle databases by using objects in place of the regular `oci_*` functions.
 
+Oci8 converts the warnings thrown by the `oci_*` function into `Oci8Exceptions` for better error handling.
+
 ## Install
 
 Via Composer
@@ -22,11 +24,27 @@ $ composer require jpina/oci8
 
 ## Usage
 
+Connect to a database, execute a query and fetch a row:
+
 ``` php
 $db = new Jpina\Oci8Connection('username', 'password', '//localhost:1521/XE');
 $statement = $db->parse('SELECT * FROM dual');
 $statement->execute();
 $row = $statement->fetchAssoc();
+```
+
+Handing errors
+
+```php
+try {
+    $db = new Jpina\Oci8Connection('username', 'password', '//localhost:1521/XE');
+    // Closing database to force an error on next statement
+    $db->close();
+    // This statement will throw an Oci8Exception since there is no active connection
+    $statement = $db->parse('SELECT * FROM dual');
+} catch (Jpina\Oci8Exception $ex) {
+    // Handle the Exception
+}
 ```
 
 ## Change log
@@ -35,9 +53,18 @@ Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recen
 
 ## Testing
 
+In order to run the tests you will need access to an Oracle Database and copy the `.env.example` to `.env`, then you
+can provide your own values within the `.env`, these values will be used by the tests to connect to the database.
+
+You can run the tests with composer once you have your `.env` file configured properly.
+
 ``` bash
 $ composer test
 ```
+
+If you don't have access to an Oracle Database server, you can also run a docker container like
+[wnameless/oracle-xe-11g](https://hub.docker.com/r/wnameless/oracle-xe-11g) and then connect to it to run the tests
+against a containerized Oracle Database.
 
 ## Contributing
 
@@ -45,7 +72,8 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) and [CONDUCT](CONDUCT.md) for details
 
 ## Security
 
-If you discover any security related issues, please email :author_email instead of using the issue tracker.
+If you discover any security related issues, please email [jabdhel@gmail.com](mailto:jabdhel@gmail.com) instead of
+using the issue tracker.
 
 ## Credits
 
