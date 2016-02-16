@@ -59,7 +59,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-version]: https://img.shields.io/packagist/v/jpina/oci8.svg?style=flat-square
 [ico-license]: https://img.shields.io/:license-mit-blue.svg
 [ico-travis]: https://travis-ci.org/jpina/oci8.svg?branch=master
-[ico-coverage]: https://codeclimate.com/github/jpina/oci8/badges/coverage.svg 
+[ico-coverage]: https://scrutinizer-ci.com/g/jpina/oci8/badges/coverage.png?b=master
 [ico-scrutinizer]: https://scrutinizer-ci.com/g/jpina/oci8/badges/quality-score.png?b=master
 [ico-codeclimate]: https://codeclimate.com/github/jpina/oci8/badges/gpa.svg
 [ico-dependencies]: https://gemnasium.com/jpina/oci8
@@ -67,7 +67,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 
 [link-packagist]: https://packagist.org/packages/jpina/oci8
 [link-travis]: https://travis-ci.org/jpina/oci8
-[link-coverage]: https://codeclimate.com/github/jpina/oci8/coverage 
+[link-coverage]: https://scrutinizer-ci.com/g/jpina/oci8/?branch=master
 [link-scrutinizer]: https://scrutinizer-ci.com/g/jpina/oci8/?branch=master
 [link-codeclimate]: https://codeclimate.com/github/jpina/oci8
 [link-downloads]: https://packagist.org/packages/jpina/oci8
