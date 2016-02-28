@@ -28,7 +28,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 
     public function bindArrayByName($name, &$varArray, $maxTableLength, $maxItemLength = -1, $type = SQLT_AFC)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_bind_array_by_name($this->resource, $name, $varArray, $maxTableLength, $maxItemLength, $type);
         restore_error_handler();
         return $isSuccess;
@@ -36,7 +36,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 
     public function bindByName($bvName, &$variable, $maxLength = -1, $type = SQLT_CHR)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_bind_by_name($this->resource, $bvName, $variable, $maxLength, $type);
         restore_error_handler();
         return $isSuccess;
@@ -44,7 +44,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 
     public function cancel()
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_cancel($this->resource);
         restore_error_handler();
         return $isSuccess;
@@ -52,7 +52,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 
     public function defineByName($columnName, &$variable, $type = SQLT_CHR)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_define_by_name($this->resource, $columnName, $variable, $type);
         restore_error_handler();
         return $isSuccess;
@@ -60,7 +60,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 
     public function execute($mode = OCI_COMMIT_ON_SUCCESS)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_execute($this->resource, $mode);
         restore_error_handler();
         return $isSuccess;
@@ -72,7 +72,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
             $flags = OCI_FETCHSTATEMENT_BY_COLUMN | OCI_ASSOC;
         }
 
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $numRows = oci_fetch_all($this->resource, $output, $skip, $maxRows, $flags);
         restore_error_handler();
         return $numRows;
@@ -80,7 +80,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 
     public function fetchArray($mode = OCI_BOTH)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $row = oci_fetch_array($this->resource, $mode);
         restore_error_handler();
         return $row;
@@ -88,7 +88,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 
     public function fetchAssoc()
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $row = oci_fetch_assoc($this->resource);
         restore_error_handler();
         return $row;
@@ -96,7 +96,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 
     public function fetchObject()
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $row = oci_fetch_object($this->resource);
         restore_error_handler();
         return $row;
@@ -104,7 +104,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 
     public function fetchRow()
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $row = oci_fetch_row($this->resource);
         restore_error_handler();
         return $row;
@@ -112,7 +112,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 
     public function fetch()
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_fetch($this->resource);
         restore_error_handler();
         return $isSuccess;
@@ -120,7 +120,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 
     public function getField($field)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $name = oci_field_name($this->resource, $field);
         $precision = oci_field_precision($this->resource, $field);
         $scale = oci_field_scale($this->resource, $field);
@@ -137,7 +137,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
     public function free()
     {
         $isSuccess = false;
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         if ($this->resource) {
             $isSuccess = oci_free_statement($this->resource);
         }
@@ -152,7 +152,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
     public function getImplicitResultset()
     {
         $resultset = false;
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $resource = oci_get_implicit_resultset($this->resource);
         if ($resource) {
             $resultset = new static($resource);
@@ -163,7 +163,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 
     public function getNumFields()
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $numFields = oci_num_fields($this->resource);
         restore_error_handler();
         return $numFields;
@@ -171,7 +171,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 
     public function getNumRows()
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $numRows = oci_num_rows($this->resource);
         restore_error_handler();
         return $numRows;
@@ -179,7 +179,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 
     public function setPrefetch($rows)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_set_prefetch($this->resource, $rows);
         restore_error_handler();
         return $isSuccess;
@@ -187,7 +187,7 @@ class Oci8Statement extends AbstractOci8Base implements Oci8StatementInterface
 
     public function getType()
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $type = oci_statement_type($this->resource);
         restore_error_handler();
         return $type;

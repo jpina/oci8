@@ -190,7 +190,7 @@ interface Oci8ConnectionInterface
      * @throws \Jpina\Oci8\Oci8Exception
      * @see http://php.net/manual/en/function.oci-set-edition.php
      */
-    public function setEdition($edition);
+    public static function setEdition($edition);
 
     /**
      * Enables or disables internal debug output

@@ -420,26 +420,40 @@ class Oci8ConnectionTest extends \PHPUnit_Framework_TestCase
         $database->setClientInfo('My Application Version 2');
     }
 
-    public function testSetEdition()
+    protected function setEdition()
     {
         $database = $this->getConnection();
         $edition = 'TEST_EDITION_' . rand(0,1000) . time();
         $statement = $database->parse('CREATE EDITION ' . $edition);
         $statement->execute();
+        $isSuccess = Oci8Connection::setEdition($edition);
 
-        $isSuccess = $database->setEdition($edition);
+        return $isSuccess;
+    }
+
+    public function testSetEdition()
+    {
+        $isSuccess = $this->setEdition();
         $this->assertTrue($isSuccess);
     }
 
-    /**
-     * @expectedException \Jpina\Oci8\Oci8Exception
-     * @expectedExceptionMessage oci_set_edition() expects parameter 1 to be string, object given
-     */
     public function testCannotSetEdition()
     {
+        $isSuccess = null;
         $database = $this->getClosedConnection();
-        $isSuccess = $database->setEdition($database);
+        try {
+            Oci8Connection::setEdition($database);
+        } catch (Oci8Exception $ex) {
+            $message = 'oci_set_edition() expects parameter 1 to be string, object given';
+            if ($message !== $ex->getMessage()) {
+                throw $ex;
+            }
+            $isSuccess = false;
+        }
         $this->assertFalse($isSuccess);
+
+        $isSuccess = $this->setEdition();
+        $this->assertTrue(true);
     }
 
     public function testSetInternalDebug()

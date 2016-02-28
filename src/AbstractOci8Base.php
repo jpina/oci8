@@ -4,7 +4,7 @@ namespace Jpina\Oci8;
 
 abstract class AbstractOci8Base
 {
-    private $errorHandler;
+    protected static $errorHandler;
     protected $resource;
 
     public function getError()
@@ -18,10 +18,10 @@ abstract class AbstractOci8Base
     /**
      * @return callable
      */
-    protected function getErrorHandler()
+    protected static function getErrorHandler()
     {
-        if (!$this->errorHandler) {
-            $this->errorHandler = function ($severity, $message, $file = '', $line = 0) {
+        if (!static::$errorHandler) {
+            static::$errorHandler = function ($severity, $message, $file = '', $line = 0) {
                 restore_error_handler();
                 $code = 0;
 
@@ -37,6 +37,6 @@ abstract class AbstractOci8Base
             };
         }
 
-        return $this->errorHandler;
+        return static::$errorHandler;
     }
 }

@@ -30,7 +30,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 
     public function changePassword($username, $oldPassword, $newPassword)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_password_change($this->resource, $username, $oldPassword, $newPassword);
         restore_error_handler();
         return $isSuccess;
@@ -40,7 +40,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
     {
         $isSuccess = false;
         if ($this->resource) {
-            set_error_handler($this->getErrorHandler());
+            set_error_handler(static::getErrorHandler());
             $isSuccess = oci_close($this->resource);
             restore_error_handler();
         }
@@ -54,7 +54,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 
     public function commit()
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_commit($this->resource);
         restore_error_handler();
         return $isSuccess;
@@ -79,7 +79,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
         $characterSet = null,
         $sessionMode = null
     ) {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $connection = oci_new_connect($username, $password, $connectionString, $characterSet, $sessionMode);
         restore_error_handler();
         return $connection;
@@ -87,7 +87,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 
     public function copyLob($lobTo, $lobFrom, $length = 0)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_lob_copy($lobTo, $lobFrom, $length);
         restore_error_handler();
         return $isSuccess;
@@ -95,7 +95,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 
     public function freeDescriptor($descriptor)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_free_descriptor($descriptor);
         restore_error_handler();
         return $isSuccess;
@@ -114,7 +114,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 
     public function getNewCollection($tdo, $schema = null)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $collection = oci_new_collection($this->resource, $tdo, $schema);
         restore_error_handler();
         return $collection;
@@ -122,7 +122,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 
     public function getNewCursor()
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $cursor = oci_new_cursor($this->resource);
         restore_error_handler();
         return new Oci8Cursor($cursor);
@@ -130,7 +130,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 
     public function getNewDescriptor($type = OCI_DTYPE_LOB)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $descriptor = oci_new_descriptor($this->resource, $type);
         restore_error_handler();
         return $descriptor;
@@ -144,7 +144,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 
     public function getServerVersion()
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $serverVersion = oci_server_version($this->resource);
         restore_error_handler();
         return $serverVersion;
@@ -152,7 +152,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 
     public function isLobEqual($lob1, $lob2)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isEquals = oci_lob_is_equal($lob1, $lob2);
         restore_error_handler();
         return $isEquals;
@@ -160,7 +160,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 
     public function parse($sqlText)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $resource = oci_parse($this->resource, $sqlText);
         restore_error_handler();
         return new Oci8Statement($resource);
@@ -168,7 +168,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 
     public function setAction($actionName)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_set_action($this->resource, $actionName);
         restore_error_handler();
         return $isSuccess;
@@ -176,7 +176,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 
     public function setClientIdentifier($clientIdentifier)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_set_client_identifier($this->resource, $clientIdentifier);
         restore_error_handler();
         return $isSuccess;
@@ -184,15 +184,15 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 
     public function setClientInfo($clientInfo)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_set_client_info($this->resource, $clientInfo);
         restore_error_handler();
         return $isSuccess;
     }
 
-    public function setEdition($edition)
+    public static function setEdition($edition)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_set_edition($edition);
         restore_error_handler();
         return $isSuccess;
@@ -205,7 +205,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 
     public function setModuleName($moduleName)
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_set_module_name($this->resource, $moduleName);
         restore_error_handler();
         return $isSuccess;
@@ -213,7 +213,7 @@ class Oci8Connection extends AbstractOci8Base implements Oci8ConnectionInterface
 
     public function rollback()
     {
-        set_error_handler($this->getErrorHandler());
+        set_error_handler(static::getErrorHandler());
         $isSuccess = oci_rollback($this->resource);
         restore_error_handler();
         return $isSuccess;
