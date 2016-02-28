@@ -458,7 +458,16 @@ END ARRAYBINDPKG1;';
     public function testGetImplicitResultsetError()
     {
         $statement = $this->getNewStatement();
-        $childStatement = $statement->getImplicitResultset();
+        try {
+            $childStatement = $statement->getImplicitResultset();
+        } catch (Oci8Exception $ex) {
+            $message = 'oci_get_implicit_resultset(): Implicit results are available in Oracle Database 12c onwards';
+            if ($ex->getMessage() !== $message) {
+                throw $ex;
+            }
+            $childStatement = false;
+        }
+
         $this->assertFalse($childStatement);
     }
 
