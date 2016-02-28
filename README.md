@@ -6,9 +6,10 @@
 [![Code Coverage][ico-coverage]][link-coverage]
 [![Scrutinizer Score][ico-scrutinizer]][link-scrutinizer]
 [![Code Climate Score][ico-codeclimate]][link-codeclimate]
-[![SensioLabsInsight Score][ico-sensiolabsinsight]][link-sensiolabsinsight]
 [![Dependencies Status](https://gemnasium.com/jpina/oci8.svg)][ico-dependencies]
 [![Total Downloads][ico-downloads]][link-downloads]
+
+[![SensioLabsInsight Score][ico-sensiolabsinsight]][link-sensiolabsinsight]
 
 Oci8 is a wrapper for the PHP [Oracle OCI](http://php.net/manual/en/book.oci8.php) functions that allows interaction
 with Oracle databases by using objects in place of the regular `oci_*` functions.
@@ -91,7 +92,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-coverage]: https://scrutinizer-ci.com/g/jpina/oci8/badges/coverage.png?b=master
 [ico-scrutinizer]: https://scrutinizer-ci.com/g/jpina/oci8/badges/quality-score.png?b=master
 [ico-codeclimate]: https://codeclimate.com/github/jpina/oci8/badges/gpa.svg
-[ico-sensiolabsinsight]: https://insight.sensiolabs.com/projects/8e542895-54fb-42e6-aa59-840b8acc3241/mini.png
+[ico-sensiolabsinsight]: https://insight.sensiolabs.com/projects/8e542895-54fb-42e6-aa59-840b8acc3241/small.png
 [ico-dependencies]: https://gemnasium.com/jpina/oci8
 [ico-downloads]: https://img.shields.io/packagist/dt/jpina/oci8.svg?style=flat-square
 
