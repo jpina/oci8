@@ -10,7 +10,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="PDO OCI8">
+        <testsuite name="OCI8">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
