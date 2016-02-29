@@ -2,11 +2,10 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
-[![Total Downloads][ico-downloads]][link-downloads]
-
 [![Build Status][ico-travis]][link-travis]
 [![Dependencies Status][ico-dependencies]][link-dependencies]
 [![PHP 7 ready][ico-php7]][link-php7]
+[![Total Downloads][ico-downloads]][link-downloads]
 
 [![Code Coverage][ico-coverage]][link-coverage]
 [![Scrutinizer Score][ico-scrutinizer]][link-scrutinizer]
