@@ -2,12 +2,15 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
+[![Total Downloads][ico-downloads]][link-downloads]
+
 [![Build Status][ico-travis]][link-travis]
+[![Dependencies Status][ico-dependencies]][link-dependencies]
+[![PHP 7 ready][ico-php7]][link-php7]
+
 [![Code Coverage][ico-coverage]][link-coverage]
 [![Scrutinizer Score][ico-scrutinizer]][link-scrutinizer]
 [![Code Climate Score][ico-codeclimate]][link-codeclimate]
-[![Dependencies Status][ico-dependencies]][link-dependencies]
-[![Total Downloads][ico-downloads]][link-downloads]
 
 [![SensioLabsInsight Score][ico-sensiolabsinsight]][link-sensiolabsinsight]
 
@@ -94,6 +97,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-codeclimate]: https://codeclimate.com/github/jpina/oci8/badges/gpa.svg
 [ico-sensiolabsinsight]: https://insight.sensiolabs.com/projects/8e542895-54fb-42e6-aa59-840b8acc3241/small.png
 [ico-dependencies]: https://gemnasium.com/jpina/oci8.svg
+[ico-php7]: http://php7ready.timesplinter.ch/jpina/oci8/badge.svg
 [ico-downloads]: https://img.shields.io/packagist/dt/jpina/oci8.svg?style=flat-square
 
 [link-packagist]: https://packagist.org/packages/jpina/oci8
@@ -103,6 +107,7 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [link-codeclimate]: https://codeclimate.com/github/jpina/oci8
 [link-sensiolabsinsight]: https://insight.sensiolabs.com/projects/8e542895-54fb-42e6-aa59-840b8acc3241
 [link-dependencies]: https://gemnasium.com/jpina/oci8
+[link-php7]: https://travis-ci.org/jpina/oci8
 [link-downloads]: https://packagist.org/packages/jpina/oci8
 [link-author]: https://github.com/jpina
 [link-contributors]: https://github.com/jpina/oci8/graphs/contributors
