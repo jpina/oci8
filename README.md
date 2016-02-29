@@ -1,11 +1,15 @@
 # Oci8
 
-[![Latest Version on Packagist][ico-version]][link-packagist]
+Package information:
+
+[![Latest Version on Packagist][ico-version]][link-version]
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-travis]][link-travis]
 [![Dependencies Status][ico-dependencies]][link-dependencies]
 [![PHP 7 ready][ico-php7]][link-php7]
 [![Total Downloads][ico-downloads]][link-downloads]
+
+Code Information:
 
 [![Code Coverage][ico-coverage]][link-coverage]
 [![Scrutinizer Score][ico-scrutinizer]][link-scrutinizer]
@@ -88,7 +92,7 @@ using the issue tracker.
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/jpina/oci8.svg?style=flat-square
+[ico-version]: https://poser.pugx.org/jpina/oci8/v/stable
 [ico-license]: https://img.shields.io/:license-mit-blue.svg
 [ico-travis]: https://travis-ci.org/jpina/oci8.svg?branch=master
 [ico-coverage]: https://scrutinizer-ci.com/g/jpina/oci8/badges/coverage.png?b=master
@@ -97,9 +101,9 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-sensiolabsinsight]: https://insight.sensiolabs.com/projects/8e542895-54fb-42e6-aa59-840b8acc3241/small.png
 [ico-dependencies]: https://gemnasium.com/jpina/oci8.svg
 [ico-php7]: http://php7ready.timesplinter.ch/jpina/oci8/badge.svg
-[ico-downloads]: https://img.shields.io/packagist/dt/jpina/oci8.svg?style=flat-square
+[ico-downloads]: https://poser.pugx.org/jpina/oci8/downloads
 
-[link-packagist]: https://packagist.org/packages/jpina/oci8
+[link-version]: https://packagist.org/packages/jpina/oci8
 [link-travis]: https://travis-ci.org/jpina/oci8
 [link-coverage]: https://scrutinizer-ci.com/g/jpina/oci8/?branch=master
 [link-scrutinizer]: https://scrutinizer-ci.com/g/jpina/oci8/?branch=master
