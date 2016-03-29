@@ -43,7 +43,8 @@ phpize
 make -j"$(nproc)"
 sudo make install
 
-rm -rf ./$OCI8_DIRNAME
+cd ..
+rm -rf package.xml ./$OCI8_DIRNAME
 
 # Enable extension
 
